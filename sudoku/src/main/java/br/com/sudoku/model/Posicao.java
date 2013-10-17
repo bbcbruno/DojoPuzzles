@@ -2,7 +2,36 @@ package br.com.sudoku.model;
 
 public class Posicao {
 
-	public Posicao(int i, int j) {
+	private int linha;
+	private int coluna;
+
+	public Posicao(int coluna, int linha) {
+		this.coluna = coluna;
+		this.linha = linha;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + coluna;
+		result = prime * result + linha;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Posicao other = (Posicao) obj;
+		if (coluna != other.coluna)
+			return false;
+		if (linha != other.linha)
+			return false;
+		return true;
+	}
 }
