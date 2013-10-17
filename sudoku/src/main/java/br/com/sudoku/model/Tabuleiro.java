@@ -2,7 +2,9 @@ package br.com.sudoku.model;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author priscila carvalho
+ */
 public class Tabuleiro {
 
 	private Map<Posicao, Grid> grids = new HashMap<Posicao, Grid>();
