@@ -1,7 +1,6 @@
 package br.com.sudoku;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -17,7 +16,6 @@ public class SudokuTest {
 		
 		Tabuleiro tabuleiro = new Sudoku().comGridsTamanho(3,3);
 		
-		assertNotNull(tabuleiro);
 		assertEquals(9, tabuleiro.getTotalGrids());
 	}
 
@@ -37,6 +35,26 @@ public class SudokuTest {
 		tabuleiro.jogarNaGridDe(new Posicao(2,1)).valor(5).para(new Posicao(1, 1));
 		
 		assertEquals(new Integer(5), tabuleiro.getGridNa(new Posicao(2, 1)).getValorNa(new Posicao(1, 1)));
+	}
+	
+	@Test
+	public void umGridNaGrade1x1EmDiversasPosicoesDeveGuardarOValorPassado() {
+	
+		Tabuleiro tabuleiro = new Sudoku().comGridsTamanho(3,3);
+		tabuleiro.jogarNaGridDe(new Posicao(1,1))
+						.valor(1).para(new Posicao(1, 1))
+						.valor(2).para(new Posicao(1, 2))
+						.valor(3).para(new Posicao(1, 3))
+						.valor(4).para(new Posicao(2, 1))
+						.valor(5).para(new Posicao(2, 2))
+						.valor(6).para(new Posicao(2, 3))
+						.valor(7).para(new Posicao(3, 1))
+						.valor(8).para(new Posicao(3, 2))
+						.valor(9).para(new Posicao(3, 3));
+
+		assertEquals(new Integer(4), tabuleiro.getGridNa(new Posicao(1, 1)).getValorNa(new Posicao(2, 1)));
+		assertEquals(new Integer(8), tabuleiro.getGridNa(new Posicao(1, 1)).getValorNa(new Posicao(3, 2)));
+		assertEquals(new Integer(3), tabuleiro.getGridNa(new Posicao(1, 1)).getValorNa(new Posicao(1, 3)));
 	}
 
 	@Test(expected=ValorMaximoExcedido.class)
