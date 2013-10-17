@@ -7,13 +7,17 @@ import br.com.sudoku.exception.ValorMaximoExcedido;
 
 public class Grid {
 
-	private int valor;
 	private int maximoPermitido;
 
 	private Map<Posicao, Integer> valores = new HashMap<Posicao, Integer>();
 	
-	public Grid(int maximoPermitido) {
-		this.maximoPermitido = maximoPermitido;
+	public Grid(int quantidadeLinhas, int quantidadeColunas) {
+		this.maximoPermitido = quantidadeLinhas * quantidadeColunas;
+		for(int linha = 1; linha <= quantidadeLinhas; linha++) {
+			for(int coluna = 1; coluna <= quantidadeColunas; coluna++) {
+				valores.put(new Posicao(linha, coluna), 0);
+			}		
+		}
 	}
 
 	public ValorSemPosicao valor(int valor) {
@@ -30,15 +34,14 @@ public class Grid {
 	
 	public class ValorSemPosicao {
 		
+		private int valor;
+
 		public ValorSemPosicao(int valor) {
-			Grid.this.valor = valor;
+			this.valor = valor;
 		}
 
 		public Grid para(Posicao posicao) {
-			if (valor > 0) {
-				valores.put(posicao, new Integer(valor));
-				valor = 0;
-			}
+			valores.put(posicao, valor);
 			return Grid.this;
 		}
 		
