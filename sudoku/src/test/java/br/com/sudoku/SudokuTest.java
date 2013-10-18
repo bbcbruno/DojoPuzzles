@@ -20,7 +20,7 @@ public class SudokuTest {
 	}
 
 	@Test
-	public void umGridNaPosicao1x1NaPosicao1x1DeveGuardarOValorPassado8() {
+	public void umGridNaPosicao1x1DeveGuardarOValorPassado8NaPosicao1x1() {
 		
 		Tabuleiro tabuleiro = new Sudoku().comGridsTamanho(3,3);
 		tabuleiro.jogarNaGridDe(new Posicao(1,1)).valor(8).para(new Posicao(1, 1));
@@ -29,7 +29,7 @@ public class SudokuTest {
 	}
 	
 	@Test
-	public void umGridNaPosicao2x1NaPosicao1x1DeveGuardarOValorPassado5() {
+	public void umGridNaPosicao2x1DeveGuardarOValorPassado5NaPosicao1x1() {
 		
 		Tabuleiro tabuleiro = new Sudoku().comGridsTamanho(3,3);
 		tabuleiro.jogarNaGridDe(new Posicao(2,1)).valor(5).para(new Posicao(1, 1));
